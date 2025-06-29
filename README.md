@@ -102,18 +102,33 @@ Quantum effects disappear when systems interact with their environment. This exp
 - No additional software required
 
 ### Installation
+
+#### Option 1: Local Setup
 1. Clone or download the game files
 2. Open `index.html` in your web browser
 3. Start playing immediately!
+
+#### Option 2: Deploy to Vercel (Recommended)
+1. Fork/clone the repository
+2. Connect to your Vercel account
+3. Deploy with one click - the `vercel.json` configuration ensures optimal security headers
+
+#### Troubleshooting
+- If you encounter issues, open `debug.html` for diagnostic tools
+- The debug panel tests browser compatibility, file loading, and JavaScript functionality
+- Check the browser console for detailed error messages
 
 ### File Structure
 ```
 quantum-escape-room/
 ├── index.html          # Main game page
+├── debug.html          # Debug and diagnostic tools
 ├── styles.css          # Game styling and animations
 ├── quantum-engine.js   # Core quantum mechanics simulation
 ├── game-levels.js      # Level definitions and progression
 ├── main.js             # Game controller and logic
+├── vercel.json         # Deployment configuration with security headers
+├── .gitignore          # Version control ignore rules
 └── README.md           # This documentation
 ```
 
