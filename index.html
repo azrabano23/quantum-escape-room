@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schrödinger's Escape Room - Quantum Puzzle Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <header>
+            <h1>🌌 Schrödinger's Escape Room</h1>
+            <div id="quantum-status">
+                <div class="status-item">
+                    <span>🔬 Quantum State:</span>
+                    <span id="quantum-state">Superposition</span>
+                </div>
+                <div class="status-item">
+                    <span>⏱️ Decoherence Timer:</span>
+                    <span id="timer">30s</span>
+                </div>
+                <div class="status-item">
+                    <span>🧩 Level:</span>
+                    <span id="level">1</span>
+                </div>
+            </div>
+        </header>
+
+        <main id="game-area">
+            <div id="room-description">
+                <h2>The Quantum Laboratory</h2>
+                <p id="scenario-text">You find yourself in a mysterious laboratory where reality itself seems uncertain. The room exists in a superposition of states until you make an observation...</p>
+            </div>
+
+            <div id="quantum-visualization">
+                <div class="quantum-particle" id="particle-1"></div>
+                <div class="quantum-particle" id="particle-2"></div>
+                <div class="entanglement-line" id="entanglement"></div>
+            </div>
+
+            <div id="choices-container">
+                <h3>Choose your observation:</h3>
+                <div id="choices">
+                    <!-- Choices will be dynamically generated -->
+                </div>
+            </div>
+
+            <div id="outcome-area" style="display: none;">
+                <h3>Wave Function Collapse!</h3>
+                <p id="outcome-text"></p>
+                <button id="next-level" onclick="nextLevel()">Continue to Next Level</button>
+            </div>
+        </main>
+
+        <aside id="quantum-tutorial">
+            <h3>🎓 Quantum Concepts</h3>
+            <div id="concept-explanation">
+                <h4>Superposition</h4>
+                <p>A quantum system can exist in multiple states simultaneously until observed.</p>
+            </div>
+        </aside>
+
+        <div id="game-over" style="display: none;">
+            <h2>🏆 Quantum Mastery Achieved!</h2>
+            <p>You've successfully navigated all quantum paradoxes!</p>
+            <button onclick="restartGame()">Play Again</button>
+        </div>
+    </div>
+
+    <script src="quantum-engine.js"></script>
+    <script src="game-levels.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

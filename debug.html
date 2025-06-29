@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug - Schrödinger's Escape Room</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f0f23;
+            color: #e6e6fa;
+            margin: 20px;
+        }
+        .debug-panel {
+            background: #1a1a2e;
+            border: 2px solid #00ffff;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .error {
+            color: #ff4444;
+            font-weight: bold;
+        }
+        .success {
+            color: #44ff44;
+            font-weight: bold;
+        }
+        button {
+            background: #4b0082;
+            color: white;
+            border: 2px solid #9370db;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #6a0dad;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔧 Quantum Escape Room Debug Panel</h1>
+    
+    <div class="debug-panel">
+        <h2>System Check</h2>
+        <div id="system-status">Running diagnostics...</div>
+    </div>
+    
+    <div class="debug-panel">
+        <h2>File Loading Test</h2>
+        <div id="file-status">Checking files...</div>
+    </div>
+    
+    <div class="debug-panel">
+        <h2>JavaScript Test</h2>
+        <div id="js-status">Testing JavaScript...</div>
+        <button onclick="testQuantumEngine()">Test Quantum Engine</button>
+        <button onclick="testGameLevels()">Test Game Levels</button>
+        <button onclick="launchMainGame()">Launch Main Game</button>
+    </div>
+    
+    <div class="debug-panel">
+        <h2>Console Errors</h2>
+        <div id="console-errors">No errors detected yet...</div>
+    </div>
+
+    <script>
+        // Capture console errors
+        window.addEventListener('error', function(e) {
+            const errorDiv = document.getElementById('console-errors');
+            errorDiv.innerHTML += `<div class="error">Error: ${e.message} at ${e.filename}:${e.lineno}</div>`;
+        });
+
+        // System check
+        function systemCheck() {
+            const status = document.getElementById('system-status');
+            let checks = [];
+            
+            // Check browser support
+            if (typeof Map !== 'undefined') {
+                checks.push('<span class="success">✓ Map support</span>');
+            } else {
+                checks.push('<span class="error">✗ Map not supported</span>');
+            }
+            
+            if (typeof Set !== 'undefined') {
+                checks.push('<span class="success">✓ Set support</span>');
+            } else {
+                checks.push('<span class="error">✗ Set not supported</span>');
+            }
+            
+            if (typeof Promise !== 'undefined') {
+                checks.push('<span class="success">✓ Promise support</span>');
+            } else {
+                checks.push('<span class="error">✗ Promise not supported</span>');
+            }
+            
+            status.innerHTML = checks.join('<br>');
+        }
+
+        // Test file loading
+        function testFileLoading() {
+            const status = document.getElementById('file-status');
+            let results = [];
+            
+            // Test loading quantum-engine.js
+            try {
+                const script1 = document.createElement('script');
+                script1.src = 'quantum-engine.js';
+                script1.onload = function() {
+                    results.push('<span class="success">✓ quantum-engine.js loaded</span>');
+                    updateFileStatus();
+                };
+                script1.onerror = function() {
+                    results.push('<span class="error">✗ quantum-engine.js failed</span>');
+                    updateFileStatus();
+                };
+                document.head.appendChild(script1);
+            } catch (e) {
+                results.push('<span class="error">✗ Error loading quantum-engine.js: ' + e.message + '</span>');
+            }
+            
+            // Test loading game-levels.js
+            try {
+                const script2 = document.createElement('script');
+                script2.src = 'game-levels.js';
+                script2.onload = function() {
+                    results.push('<span class="success">✓ game-levels.js loaded</span>');
+                    updateFileStatus();
+                };
+                script2.onerror = function() {
+                    results.push('<span class="error">✗ game-levels.js failed</span>');
+                    updateFileStatus();
+                };
+                document.head.appendChild(script2);
+            } catch (e) {
+                results.push('<span class="error">✗ Error loading game-levels.js: ' + e.message + '</span>');
+            }
+            
+            function updateFileStatus() {
+                status.innerHTML = results.join('<br>');
+            }
+        }
+
+        // Test JavaScript functionality
+        function testJavaScript() {
+            const status = document.getElementById('js-status');
+            let tests = [];
+            
+            try {
+                // Test basic ES6 features
+                const testArrow = () => 'arrow functions work';
+                tests.push('<span class="success">✓ Arrow functions</span>');
+                
+                const testTemplate = `template literals work`;
+                tests.push('<span class="success">✓ Template literals</span>');
+                
+                const testClass = class TestClass {};
+                tests.push('<span class="success">✓ ES6 Classes</span>');
+                
+            } catch (e) {
+                tests.push('<span class="error">✗ ES6 features failed: ' + e.message + '</span>');
+            }
+            
+            status.innerHTML = tests.join('<br>');
+        }
+
+        function testQuantumEngine() {
+            try {
+                if (typeof QuantumEngine !== 'undefined') {
+                    const engine = new QuantumEngine();
+                    document.getElementById('js-status').innerHTML += '<br><span class="success">✓ QuantumEngine created successfully</span>';
+                } else {
+                    document.getElementById('js-status').innerHTML += '<br><span class="error">✗ QuantumEngine not found</span>';
+                }
+            } catch (e) {
+                document.getElementById('js-status').innerHTML += '<br><span class="error">✗ QuantumEngine error: ' + e.message + '</span>';
+            }
+        }
+
+        function testGameLevels() {
+            try {
+                if (typeof GAME_LEVELS !== 'undefined') {
+                    document.getElementById('js-status').innerHTML += '<br><span class="success">✓ GAME_LEVELS found (' + GAME_LEVELS.length + ' levels)</span>';
+                } else {
+                    document.getElementById('js-status').innerHTML += '<br><span class="error">✗ GAME_LEVELS not found</span>';
+                }
+            } catch (e) {
+                document.getElementById('js-status').innerHTML += '<br><span class="error">✗ GAME_LEVELS error: ' + e.message + '</span>';
+            }
+        }
+
+        function launchMainGame() {
+            window.open('index.html', '_blank');
+        }
+
+        // Run initial tests
+        window.addEventListener('DOMContentLoaded', function() {
+            systemCheck();
+            testFileLoading();
+            testJavaScript();
+        });
+    </script>
+</body>
+</html>

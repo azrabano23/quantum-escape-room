@@ -1,0 +1,582 @@
+/* Quantum Escape Room Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+    color: #e6e6fa;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+#game-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+}
+
+/* Header Styles */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 2px solid #00ffff;
+    border-radius: 15px;
+    background: rgba(0, 255, 255, 0.1);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #00ffff;
+    animation: quantumGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes quantumGlow {
+    0% { text-shadow: 0 0 10px #00ffff; }
+    100% { text-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff; }
+}
+
+#quantum-status {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.status-item {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid #7b68ee;
+}
+
+/* Main Game Area */
+main {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+#room-description {
+    background: rgba(25, 25, 112, 0.3);
+    padding: 25px;
+    border-radius: 15px;
+    border: 2px solid #7b68ee;
+    margin-bottom: 20px;
+    grid-column: 1 / -1;
+}
+
+#room-description h2 {
+    color: #ffd700;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+/* Quantum Visualization */
+#quantum-visualization {
+    position: relative;
+    height: 200px;
+    background: radial-gradient(circle, rgba(123, 104, 238, 0.2) 0%, transparent 70%);
+    border: 2px solid #9370db;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    grid-column: 1 / -1;
+}
+
+.quantum-particle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #00ffff 0%, #0080ff 100%);
+    box-shadow: 0 0 15px #00ffff;
+    animation: quantumFloat 3s ease-in-out infinite;
+}
+
+#particle-1 {
+    top: 30%;
+    left: 20%;
+    animation-delay: 0s;
+}
+
+#particle-2 {
+    top: 60%;
+    right: 20%;
+    animation-delay: 1.5s;
+}
+
+@keyframes quantumFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+    25% { transform: translate(20px, -10px) scale(1.2); opacity: 1; }
+    50% { transform: translate(-10px, 20px) scale(0.8); opacity: 0.5; }
+    75% { transform: translate(15px, 5px) scale(1.1); opacity: 0.9; }
+}
+
+.entanglement-line {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    right: 25%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, #ff1493 50%, transparent 100%);
+    animation: entanglementPulse 2s ease-in-out infinite;
+    transform-origin: center;
+}
+
+@keyframes entanglementPulse {
+    0%, 100% { opacity: 0.3; transform: scaleX(0.5); }
+    50% { opacity: 1; transform: scaleX(1.2); }
+}
+
+/* Choices Container */
+#choices-container {
+    background: rgba(75, 0, 130, 0.3);
+    padding: 25px;
+    border-radius: 15px;
+    border: 2px solid #8a2be2;
+}
+
+#choices-container h3 {
+    color: #ffa500;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+}
+
+#choices {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.choice-button {
+    background: linear-gradient(45deg, #4b0082 0%, #663399 100%);
+    color: white;
+    border: 2px solid #9370db;
+    padding: 15px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.choice-button:hover {
+    background: linear-gradient(45deg, #6a0dad 0%, #8a2be2 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+}
+
+.choice-button:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+    transition: left 0.5s ease;
+}
+
+.choice-button:hover:before {
+    left: 100%;
+}
+
+/* Outcome Area */
+#outcome-area {
+    background: rgba(0, 100, 0, 0.3);
+    padding: 25px;
+    border-radius: 15px;
+    border: 2px solid #32cd32;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#outcome-area h3 {
+    color: #32cd32;
+    margin-bottom: 15px;
+    font-size: 1.6rem;
+}
+
+#next-level {
+    background: linear-gradient(45deg, #228b22 0%, #32cd32 100%);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-family: inherit;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+}
+
+#next-level:hover {
+    background: linear-gradient(45deg, #32cd32 0%, #7cfc00 100%);
+    transform: scale(1.05);
+}
+
+/* Tutorial Sidebar */
+#quantum-tutorial {
+    background: rgba(72, 61, 139, 0.3);
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px solid #6495ed;
+    height: fit-content;
+}
+
+#quantum-tutorial h3 {
+    color: #ffd700;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+#quantum-tutorial h4 {
+    color: #87ceeb;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+#quantum-tutorial p {
+    line-height: 1.6;
+    font-size: 0.9rem;
+}
+
+/* Game Over Screen */
+#game-over {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: gameOverGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes gameOverGlow {
+    0% { background: rgba(0, 0, 0, 0.9); }
+    100% { background: rgba(25, 25, 112, 0.9); }
+}
+
+#game-over h2 {
+    font-size: 3rem;
+    color: #ffd700;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px #ffd700;
+}
+
+#game-over button {
+    background: linear-gradient(45deg, #ffd700 0%, #ffed4e 100%);
+    color: #1a1a2e;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+#game-over button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px #ffd700;
+}
+
+/* Timer Animation */
+.timer-warning {
+    animation: timerPulse 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes timerPulse {
+    0% { color: #e6e6fa; }
+    100% { color: #ff4500; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+    
+    #quantum-status {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .choice-button {
+        font-size: 0.9rem;
+        padding: 12px 15px;
+    }
+}
+
+/* Superposition Effect */
+.superposition {
+    animation: superpositionShimmer 1s ease-in-out infinite;
+}
+
+@keyframes superpositionShimmer {
+    0%, 100% { opacity: 0.7; filter: blur(1px); }
+    50% { opacity: 1; filter: blur(0px); }
+}
+
+/* Collapsed State Effect */
+.collapsed {
+    animation: collapseEffect 0.5s ease-out;
+}
+
+@keyframes collapseEffect {
+    0% { transform: scale(1.2); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Physics Equations Display */
+.physics-equations {
+    margin-top: 20px;
+    background: rgba(138, 43, 226, 0.2);
+    border: 1px solid #9370db;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.physics-section h5 {
+    color: #ffd700;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.equation {
+    margin: 8px 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.equation strong {
+    color: #87ceeb;
+    display: inline-block;
+    min-width: 120px;
+}
+
+.math {
+    font-family: 'Courier New', monospace;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 0.95em;
+}
+
+.physics-note {
+    margin-top: 12px;
+    font-style: italic;
+    color: #d3d3d3;
+    font-size: 0.85rem;
+    line-height: 1.3;
+}
+
+/* Advanced Level Visualizations */
+.bell-theorem #quantum-visualization {
+    background: radial-gradient(circle, rgba(255, 20, 147, 0.3) 0%, transparent 70%);
+    border-color: #ff1493;
+}
+
+.bell-theorem .quantum-particle {
+    background: radial-gradient(circle, #ff1493 0%, #ff69b4 100%);
+    box-shadow: 0 0 15px #ff1493;
+}
+
+.measurement-problem #quantum-visualization {
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.3) 0%, transparent 70%);
+    border-color: #ffd700;
+}
+
+.measurement-problem .quantum-particle {
+    background: radial-gradient(circle, #ffd700 0%, #ffed4e 100%);
+    box-shadow: 0 0 15px #ffd700;
+    animation: catStateFlicker 2s ease-in-out infinite;
+}
+
+@keyframes catStateFlicker {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    25% { opacity: 0.3; transform: scale(0.8); }
+    75% { opacity: 0.7; transform: scale(1.1); }
+}
+
+/* Bell Test Visualization */
+.bell-experiment::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    right: 10%;
+    bottom: 20%;
+    background: linear-gradient(45deg, 
+        transparent 0%, 
+        rgba(255, 20, 147, 0.1) 25%, 
+        transparent 50%, 
+        rgba(255, 20, 147, 0.1) 75%, 
+        transparent 100%);
+    animation: bellCorrelation 3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes bellCorrelation {
+    0%, 100% { transform: rotate(0deg); opacity: 0.5; }
+    50% { transform: rotate(180deg); opacity: 1; }
+}
+
+/* Schrödinger Box Visualization */
+.schrodinger-box #quantum-visualization {
+    position: relative;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.2) 0%, rgba(139, 69, 19, 0.2) 100%);
+    border: 3px solid #8b4513;
+    border-radius: 15px;
+}
+
+.schrodinger-box #quantum-visualization::after {
+    content: '📦🐱';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    animation: catSuperposition 2s ease-in-out infinite;
+}
+
+@keyframes catSuperposition {
+    0%, 100% { opacity: 0.5; filter: blur(2px); }
+    50% { opacity: 1; filter: blur(0px); }
+}
+
+/* Achievement Notifications */
+.achievement-popup {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(45deg, #ffd700 0%, #ffed4e 100%);
+    color: #1a1a2e;
+    padding: 15px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    z-index: 1001;
+    animation: achievementSlide 3s ease-in-out;
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.5);
+}
+
+@keyframes achievementSlide {
+    0% { transform: translateX(300px); opacity: 0; }
+    15%, 85% { transform: translateX(0); opacity: 1; }
+    100% { transform: translateX(300px); opacity: 0; }
+}
+
+/* Uncertainty Principle Effects */
+.uncertain {
+    position: relative;
+    overflow: visible;
+}
+
+.uncertain::before {
+    content: '∆';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #ff4500;
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    animation: uncertaintyPulse 1s ease-in-out infinite;
+}
+
+@keyframes uncertaintyPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* Advanced Physics Mode */
+.expert-mode .math {
+    font-size: 1.1em;
+    background: rgba(138, 43, 226, 0.4);
+    border: 1px solid #9370db;
+}
+
+.expert-mode .physics-equations {
+    background: rgba(25, 25, 112, 0.5);
+    border: 2px solid #7b68ee;
+}
+
+/* Quantum State Indicators */
+.quantum-state-indicator {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #00ffff;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    border: 1px solid #00ffff;
+}
+
+/* Level Difficulty Indicators */
+.difficulty-simple { border-left: 4px solid #32cd32; }
+.difficulty-moderate { border-left: 4px solid #ffa500; }
+.difficulty-complex { border-left: 4px solid #ff4500; }
+.difficulty-master { border-left: 4px solid #ff1493; }
+.difficulty-expert { border-left: 4px solid #8a2be2; }
+
+/* Interactive Equation Hover Effects */
+.math:hover {
+    background: rgba(138, 43, 226, 0.6);
+    transform: scale(1.05);
+    transition: all 0.2s ease;
+    cursor: help;
+}
+
+/* Advanced Entanglement Visualization */
+.bell-state .entanglement-line {
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        #ff1493 20%, 
+        #00ffff 50%, 
+        #ff1493 80%, 
+        transparent 100%);
+    height: 3px;
+    animation: bellEntanglement 1.5s ease-in-out infinite;
+}
+
+@keyframes bellEntanglement {
+    0%, 100% { transform: scaleX(0.8) scaleY(1); opacity: 0.7; }
+    50% { transform: scaleX(1.3) scaleY(2); opacity: 1; }
+}
