@@ -1,6 +1,16 @@
 # 🌌 Schrödinger's Escape Room
 
+[![Live Demo](https://img.shields.io/badge/🎮_Play_Live-quantum--escape--room.vercel.app-blue?style=for-the-badge)](https://quantum-escape-room.vercel.app/)
+[![GitHub](https://img.shields.io/github/license/azrabano23/quantum-escape-room?style=for-the-badge)](https://github.com/azrabano23/quantum-escape-room/blob/main/LICENSE)
+[![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com)
+
+> **🎯 Play Now**: [quantum-escape-room.vercel.app](https://quantum-escape-room.vercel.app/)
+
 A quantum physics puzzle game that teaches players quantum mechanics concepts through interactive gameplay. Navigate through increasingly complex quantum phenomena while racing against decoherence timers!
+
+![Quantum Escape Room Demo](https://img.shields.io/badge/🌊_Quantum_Physics-Interactive_Learning-purple?style=flat-square)
+![Educational Game](https://img.shields.io/badge/🎓_Educational-Game_Based_Learning-green?style=flat-square)
+![No Dependencies](https://img.shields.io/badge/📦_Zero_Dependencies-Pure_JavaScript-yellow?style=flat-square)
 
 ## 🎮 Game Concept
 
